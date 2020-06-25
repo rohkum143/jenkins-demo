@@ -6,11 +6,16 @@ apiVersion: v1
 kind: Pod
 metadata:
   labels:
-    some-label: test
+    some-label: some-label-value
 spec:
   containers:
-  - name: jnlp
-    image: jenkinsci/jnlp-slave
+  - name: maven
+    image: maven:alpine
+    command:
+    - cat
+    tty: true
+  - name: busybox
+    image: busybox
     command:
     - cat
     tty: true
@@ -18,11 +23,15 @@ spec:
     }
   }
   stages {
-    stage('test') {
+    stage('Run maven') {
       steps {
-        echo 'hello world '
+        container('maven') {
+          sh 'mvn -version'
+        }
+        container('busybox') {
+          sh '/bin/busybox'
+        }
       }
     }
-
   }
 }
