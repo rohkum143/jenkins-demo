@@ -6,7 +6,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   labels:
-    some-label: some-label-value
+    some-label: test
 spec:
   containers:
   - name: jnlp
@@ -19,19 +19,13 @@ spec:
     image: maven:alpine
     command:
     - cat
-    tty: true
-  - name: busybox
-    image: busybox
-    command:
-    - cat
-    tty: true
 """
     }
   }
   stages {
     stage('test') {
       steps {
-        echo 'hello'
+        echo 'hello world '
       }
     }
 
