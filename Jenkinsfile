@@ -14,11 +14,6 @@ spec:
     command:
     - cat
     tty: true
-  containers:
-  - name: maven
-    image: maven:alpine
-    command:
-    - cat
 """
     }
   }
