@@ -9,6 +9,12 @@ metadata:
     some-label: some-label-value
 spec:
   containers:
+  - name: jnlp
+    image: jenkinsci/jnlp-slave
+    command:
+    - cat
+    tty: true
+  containers:
   - name: maven
     image: maven:alpine
     command:
